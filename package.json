@@ -2,6 +2,7 @@
   "name": "peerping",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://peerping-91686.firebaseapp.com",
   "dependencies": {
     "emotion": "^9.2.8",
     "firebase": "^5.5.0",
