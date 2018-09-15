@@ -13,12 +13,14 @@ export interface IProps {
 export interface IState {
   peer?: Peer.Instance;
   meta?: string;
+  latencyMs?: number;
 }
 
 export class Room extends React.Component<RouteComponentProps<IProps>, IState> {
   state: IState = {};
 
   componentDidMount() {
+    const RTT_PROP = 'currentRoundTripTime';
     const isHost = location.hash === '#1';
     const id = this.props.match.params.slug;
 
@@ -65,22 +67,30 @@ export class Room extends React.Component<RouteComponentProps<IProps>, IState> {
       }
     });
 
+    const convertRttToMs = (latency?: number) => {
+      return latency === undefined ? NaN : Math.floor(latency * 1000);
+    };
+
     peer.on('connect', () => {
       console.log('CONNECT');
       roomRef.child('connected').set(true);
       peer.send('whatever ' + Math.random());
       (window as any).peer = peer;
-      const isRtt = (key: string) => {
-        const k = key.toLowerCase();
-        return k.includes('round') || k.includes('rtt');
-      };
 
-      const logRttValues = (report: {}) => {
-        const keys = Object.keys(report).filter(isRtt);
-        keys.forEach(k => console.log(k, report[k]));
-      };
-      (peer as any)._pc.getStats().then((res: RTCStatsReport) => {
-        res.forEach(report => logRttValues(report));
+      const conn: RTCPeerConnection = (peer as any)._pc;
+      conn.getStats().then(reports => {
+        const output: RTCStats[] = [];
+        reports.forEach(report => {
+          output.push(report);
+          if (
+            report.type === 'candidate-pair' &&
+            'currentRoundTripTime' in report
+          ) {
+            const latencyMs = convertRttToMs(report[RTT_PROP]);
+            this.setState({ latencyMs });
+          }
+        });
+        console.table(output);
       });
     });
 
@@ -97,10 +107,17 @@ export class Room extends React.Component<RouteComponentProps<IProps>, IState> {
   }
 
   render() {
-    const { meta } = this.state;
+    const { meta, latencyMs } = this.state;
     return (
       <>
         <h1>Room</h1>
+        <h4>
+          Latency:{' '}
+          <span>
+            {latencyMs}
+            ms
+          </span>
+        </h4>
         <pre>{meta}</pre>
       </>
     );
