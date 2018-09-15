@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Subject, timer } from 'rxjs';
-import { map, switchMap, takeUntil } from 'rxjs/operators';
+import { switchMap, takeUntil } from 'rxjs/operators';
 
 export interface Props {
   connection: RTCPeerConnection;
@@ -43,10 +43,9 @@ export class ConnectionStats extends React.Component<Props, State> {
     timer(0, 2000)
       .pipe(
         switchMap(() => getLatency(connection)),
-        map(latency => this.setState({ latencyMs: latency })),
         takeUntil(this.destroy$)
       )
-      .subscribe();
+      .subscribe(latency => this.setState({ latencyMs: latency }));
   }
 
   componentWillUnmount() {
