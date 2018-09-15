@@ -2,25 +2,23 @@ import * as firebase from 'firebase';
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 import * as Peer from 'simple-peer';
+import { ConnectionStats, RTT_PROP } from './ConnectionStats';
 
-// tslint:disable:member-access
-// tslint:disable:no-console
-
-export interface IProps {
+export interface Props {
   slug: string;
 }
 
-export interface IState {
+export interface State {
   peer?: Peer.Instance;
   meta?: string;
   latencyMs?: number;
+  connection?: RTCPeerConnection;
 }
 
-export class Room extends React.Component<RouteComponentProps<IProps>, IState> {
-  state: IState = {};
+export class Room extends React.Component<RouteComponentProps<Props>, State> {
+  state: State = {};
 
   componentDidMount() {
-    const RTT_PROP = 'currentRoundTripTime';
     const isHost = location.hash === '#1';
     const id = this.props.match.params.slug;
 
@@ -67,28 +65,22 @@ export class Room extends React.Component<RouteComponentProps<IProps>, IState> {
       }
     });
 
-    const convertRttToMs = (latency?: number) => {
-      return latency === undefined ? NaN : Math.floor(latency * 1000);
-    };
-
     peer.on('connect', () => {
       console.log('CONNECT');
       roomRef.child('connected').set(true);
       peer.send('whatever ' + Math.random());
       (window as any).peer = peer;
 
-      const conn: RTCPeerConnection = (peer as any)._pc;
-      conn.getStats().then(reports => {
+      const connection: RTCPeerConnection = (peer as any)._pc;
+      this.setState({ connection });
+
+      connection.getStats().then(reports => {
         const output: RTCStats[] = [];
         reports.forEach(report => {
-          output.push(report);
-          if (
-            report.type === 'candidate-pair' &&
-            'currentRoundTripTime' in report
-          ) {
-            const latencyMs = convertRttToMs(report[RTT_PROP]);
-            this.setState({ latencyMs });
+          if (RTT_PROP in report) {
+            console.log(report.id, report.type, report[RTT_PROP]);
           }
+          output.push(report);
         });
         console.table(output);
       });
@@ -107,17 +99,11 @@ export class Room extends React.Component<RouteComponentProps<IProps>, IState> {
   }
 
   render() {
-    const { meta, latencyMs } = this.state;
+    const { meta, connection } = this.state;
     return (
       <>
         <h1>Room</h1>
-        <h4>
-          Latency:{' '}
-          <span>
-            {latencyMs}
-            ms
-          </span>
-        </h4>
+        {connection ? <ConnectionStats connection={connection} /> : null}
         <pre>{meta}</pre>
       </>
     );
