@@ -1,8 +1,15 @@
 {
   "name": "peerping",
   "version": "0.1.0",
-  "private": true,
   "homepage": "https://peerping-91686.firebaseapp.com",
+  "private": true,
+  "license": "Apache-2.0",
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
   "dependencies": {
     "emotion": "^9.2.8",
     "firebase": "^5.5.0",
