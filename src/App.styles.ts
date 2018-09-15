@@ -1,7 +1,7 @@
 import styled from 'react-emotion';
 
 export const AppContainer = styled('div')`
-  text-align: center;
+  /* text-align: center; */
 `;
 
 export const Logo = styled('img')`
