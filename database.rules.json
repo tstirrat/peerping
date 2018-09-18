@@ -1,6 +1,18 @@
 {
   "rules": {
-    ".read": true,
-    ".write": true
+    "rooms": {
+      ".indexOn": ["ownerId"],
+
+      "$room_id": {
+        ".read": "auth != null",
+        ".write": "!data.exists() || root.child('rooms').child($room_id).child('ownerId').val() == auth.uid",
+
+        "signal": {
+          "guest": {
+            ".write": true
+          }
+        }
+      }
+    }
   }
 }
