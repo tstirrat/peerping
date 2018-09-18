@@ -13,6 +13,8 @@
   "dependencies": {
     "emotion": "^9.2.8",
     "firebase": "^5.5.0",
+    "greg": "^0.0.2",
+    "prop-types": "^15.6.2",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-emotion": "^9.2.8",
@@ -34,6 +36,7 @@
     "@firebase/database-types": "^0.3.2",
     "@types/jest": "^23.3.2",
     "@types/node": "^10.9.4",
+    "@types/prop-types": "^15.5.5",
     "@types/react": "^16.4.13",
     "@types/react-dom": "^16.0.7",
     "@types/react-router": "^4.0.31",
