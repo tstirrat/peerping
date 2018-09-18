@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Redirect, RouteComponentProps, withRouter } from 'react-router';
 import * as Peer from 'simple-peer';
 
-import { ConnectionStats, RTT_PROP } from './ConnectionStats';
+import { ConnectionStats } from './ConnectionStats';
 
 export interface UrlParams {
   id: string;
@@ -18,6 +18,7 @@ export interface State {
   meta?: string;
   connection?: RTCPeerConnection;
   goHome?: boolean;
+  stats?: any[];
 }
 
 export enum RoomStatus {
@@ -40,7 +41,6 @@ export class Room extends React.Component<Props, State> {
     const id = match.params.id;
 
     const db = firebase.database();
-    let isHost = false;
 
     const roomRef = db.ref(`rooms/${id}`);
 
@@ -49,12 +49,13 @@ export class Room extends React.Component<Props, State> {
       .then(snap => snap.val() as RoomData | null)
       .then(room => {
         if (room) {
-          isHost = !!user && user.uid === room.ownerId;
-          this.connect(
+          const isHost = !!user && user.uid === room.ownerId;
+          const peer = this.connect(
             isHost,
-            peer,
             roomRef
           );
+          (window as any).peer = peer;
+          this.setState({ peer });
         } else {
           this.setState({ goHome: true });
         }
@@ -64,38 +65,6 @@ export class Room extends React.Component<Props, State> {
       const meta = JSON.stringify(snap && snap.val(), undefined, 2);
       this.setState({ meta });
     });
-
-    const peer = new Peer({ initiator: isHost, trickle: false });
-
-    peer.on('error', err => console.error(err));
-
-    peer.on('connect', () => {
-      console.log('CONNECT');
-      roomRef.child('status').set(RoomStatus.CONNECTED);
-
-      const connection: RTCPeerConnection = (peer as any)._pc;
-      this.setState({ connection });
-
-      connection.getStats().then(reports => {
-        const output: RTCStats[] = [];
-        reports.forEach(report => {
-          if (RTT_PROP in report) {
-            console.log(report.id, report.type, report[RTT_PROP]);
-          }
-          output.push(report);
-        });
-        console.table(output);
-      });
-    });
-
-    peer.on('close', () => {
-      console.log('DISCONNECT');
-      roomRef.child('status').set(RoomStatus.DISCONNECTED);
-    });
-
-    peer.on('data', data => console.log('received: ' + data));
-
-    this.setState({ peer });
   }
 
   componentWillUnmount() {
@@ -107,22 +76,54 @@ export class Room extends React.Component<Props, State> {
 
   render() {
     const { meta, connection, goHome } = this.state;
+    const id = this.props.match.params.id;
+    const url = `${process.env.REACT_APP_PUBLIC_URL}/${id}`;
     return (
       <>
         {goHome && <Redirect to="/" />}
 
         <h1>Room</h1>
+        <h2>
+          <a href={url}>{url}</a>
+        </h2>
+        <p>
+          Give the room link to a friend to see the ping value between your
+          devices
+        </p>
         {connection ? <ConnectionStats connection={connection} /> : null}
+
+        <h4>Debug</h4>
         <pre>{meta}</pre>
       </>
     );
   }
 
-  private connect(
-    isHost: boolean,
-    peer: Peer.Instance,
-    roomRef: firebase.database.Reference
-  ) {
+  private connect(isHost: boolean, roomRef: firebase.database.Reference) {
+    const peer = new Peer({ initiator: isHost, trickle: false });
+
+    peer.on('error', err => console.error(err));
+
+    peer.on('connect', () => {
+      console.log('CONNECT');
+      if (isHost) {
+        roomRef.child('status').set(RoomStatus.CONNECTED);
+      }
+
+      const connection: RTCPeerConnection = (peer as any)._pc;
+      this.setState({ connection });
+
+      this.getStats(connection).then(stats => this.printStats(stats));
+    });
+
+    peer.on('close', () => {
+      console.log('DISCONNECT');
+      if (isHost) {
+        roomRef.child('status').set(RoomStatus.DISCONNECTED);
+      }
+    });
+
+    peer.on('data', data => console.log('received: ' + data));
+
     let me = 'signal/host';
     let them = 'signal/guest';
 
@@ -136,7 +137,9 @@ export class Room extends React.Component<Props, State> {
     peer.on('signal', data => {
       console.log('SIGNAL', data);
       roomRef.child(me).set(data);
-      roomRef.child('status').set('connecting');
+      if (isHost) {
+        roomRef.child('status').set('connecting');
+      }
     });
 
     // look for other client's signal data and send it
@@ -145,11 +148,36 @@ export class Room extends React.Component<Props, State> {
       if (signalData) {
         console.log('sending signal data', signalData.type);
         peer.signal(signalData);
-
-        roomRef.child(them).remove();
         roomRef.child(them).off();
+        if (isHost) {
+          roomRef.child(them).remove();
+        }
       }
     });
+
+    return peer;
+  }
+
+  private getStats(connection: RTCPeerConnection) {
+    return connection.getStats().then(response => {
+      const reports: RTCStats[] = [];
+      response.forEach(report => reports.push(report));
+      return reports;
+    });
+  }
+
+  private printStats(stats: RTCStats[]): any {
+    const isRttKey = (k: string) =>
+      k.toLowerCase().includes('rtt') || k.toLowerCase().includes('roundtrip');
+    const filteredStats = stats.map(report => {
+      const { id, type, timestamp, ...rest } = report;
+      const out = { id, type, timestamp };
+
+      const rttKeys = Object.keys(rest).filter(isRttKey);
+      rttKeys.forEach(k => (out[k] = report[k]));
+      return out;
+    });
+    console.table(filteredStats);
   }
 }
 
