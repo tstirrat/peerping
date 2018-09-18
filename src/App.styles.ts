@@ -1,9 +1,5 @@
 import styled from 'react-emotion';
 
-export const AppContainer = styled('div')`
-  /* text-align: center; */
-`;
-
 export const Logo = styled('img')`
   animation: logo-spin infinite 20s linear;
   height: 80px;
