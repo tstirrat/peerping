@@ -1,5 +1,6 @@
 import * as firebase from 'firebase/app';
-import 'firebase/database'; // required for side-effects
+import 'firebase/auth'; // required for side-effects
+import 'firebase/database';
 
 export function configureFirebase() {
   // TODO: use firebase hosting config implicit init here.
