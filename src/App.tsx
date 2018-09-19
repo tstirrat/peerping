@@ -1,13 +1,3 @@
-import 'material-components-web/dist/material-components-web.css';
-
-import {
-  TopAppBar,
-  TopAppBarFixedAdjust,
-  TopAppBarNavigationIcon,
-  TopAppBarRow,
-  TopAppBarSection,
-  TopAppBarTitle
-} from '@rmwc/top-app-bar';
 import { Typography } from '@rmwc/typography';
 import * as firebase from 'firebase/app';
 import * as React from 'react';
@@ -16,12 +6,11 @@ import {
   Route,
   RouteComponentProps,
   RouteProps,
-  Switch,
-  withRouter
+  Switch
 } from 'react-router-dom';
-import onlyUpdateForKeys from 'recompose/onlyUpdateForKeys';
 import pure from 'recompose/pure';
 
+import { AppHeader } from './AppHeader';
 import { Home } from './Home';
 import { RoomRoute } from './Room';
 
@@ -38,15 +27,7 @@ export class App extends React.Component {
     return (
       <Router>
         <div>
-          <TopAppBar role="navigation" fixed={true}>
-            <TopAppBarRow>
-              <TopAppBarSection alignStart>
-                <HomeIcon />
-                <TopAppBarTitle>Peer ping</TopAppBarTitle>
-              </TopAppBarSection>
-            </TopAppBarRow>
-          </TopAppBar>
-          <TopAppBarFixedAdjust />
+          <AppHeader />
           {user ? (
             <Switch>
               <UserRoute path="/:id" component={RoomRoute} user={user} />
@@ -78,14 +59,6 @@ export class App extends React.Component {
     this.userUnsub();
   }
 }
-
-const neverUpdate = onlyUpdateForKeys([]);
-const HomeIcon = neverUpdate(
-  withRouter(({ history }) => (
-    // tslint:disable-next-line:jsx-no-lambda
-    <TopAppBarNavigationIcon icon="home" onClick={() => history.push('/')} />
-  ))
-);
 
 export interface UserRouteProps extends RouteProps {
   user: firebase.User;
