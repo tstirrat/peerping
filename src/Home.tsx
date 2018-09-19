@@ -33,7 +33,7 @@ export class Home extends React.PureComponent<Props> {
 
     const room: RoomData = {
       ownerId: user.uid,
-      status: RoomStatus.DISCONNECTED
+      status: RoomStatus.WAITING
     };
 
     const id = greg.sentence().replace(/\s/g, '-');

@@ -23,9 +23,11 @@ export interface State {
 }
 
 export enum RoomStatus {
+  WAITING = 'WAITING',
   CONNECTING = 'CONNECTING',
   CONNECTED = 'CONNECTED',
-  DISCONNECTED = 'DISCONNECTED'
+  DISCONNECTED = 'DISCONNECTED',
+  ERROR = 'ERROR'
 }
 
 export interface RoomData {
@@ -108,7 +110,12 @@ export class Room extends React.PureComponent<Props, State> {
   private connect(isHost: boolean, roomRef: firebase.database.Reference) {
     const peer = new Peer({ initiator: isHost, trickle: false });
 
-    peer.on('error', err => console.error(err));
+    peer.on('error', err => {
+      console.error(err);
+      if (isHost) {
+        roomRef.update({ status: RoomStatus.ERROR, error: err.message });
+      }
+    });
 
     peer.on('connect', () => {
       console.log('CONNECT');
@@ -142,10 +149,9 @@ export class Room extends React.PureComponent<Props, State> {
 
     // push my signal data to the DB
     peer.on('signal', data => {
-      console.log('SIGNAL', data);
       roomRef.child(me).set(data);
       if (isHost) {
-        roomRef.child('status').set('connecting');
+        roomRef.update({ status: RoomStatus.CONNECTING, error: null });
       }
     });
 
@@ -153,7 +159,6 @@ export class Room extends React.PureComponent<Props, State> {
     roomRef.child(them).on('value', snap => {
       const signalData = snap && snap.val();
       if (signalData) {
-        console.log('sending signal data', signalData.type);
         peer.signal(signalData);
         roomRef.child(them).off();
         if (isHost) {
