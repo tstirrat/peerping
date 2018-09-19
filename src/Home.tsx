@@ -1,3 +1,5 @@
+import Button from '@rmwc/button';
+import Typography from '@rmwc/typography';
 import * as firebase from 'firebase/app';
 import * as greg from 'greg';
 import * as React from 'react';
@@ -12,29 +14,28 @@ export interface Props extends RouteComponentProps {
 
 export class Home extends React.Component<Props> {
   render() {
-    const { user } = this.props;
-    (window as any).firebase = firebase;
     return (
       <>
-        <h1>Peer ping</h1>
-        User: {user.uid}
+        <Typography use="headline1" tag="h1">
+          Peer ping
+        </Typography>
+        <Typography use="body1" tag="p">
+          Measure the latency between two peers
+        </Typography>
         <form>
-          <button type="button" onClick={this.createRoomClicked}>
+          <Button raised type="button" onClick={this.createRoomClicked}>
             Create room
-          </button>
+          </Button>
         </form>
       </>
     );
   }
 
   private createRoomClicked = () => {
-    // TODO: fix the potential race condition here
-    if (!this.props.user) {
-      throw new Error('Authed user is required');
-    }
+    const { user, history } = this.props;
 
     const room: RoomData = {
-      ownerId: this.props.user.uid,
+      ownerId: user.uid,
       status: RoomStatus.DISCONNECTED
     };
 
@@ -44,6 +45,6 @@ export class Home extends React.Component<Props> {
       .ref()
       .child(`rooms/${id}`)
       .set(room)
-      .then(() => this.props.history.push(`/${id}`)); // TODO: use react-router
+      .then(() => history.push(`/${id}`)); // TODO: use react-router
   };
 }

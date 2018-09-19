@@ -3,7 +3,8 @@
   "rules": {
     "interface-name": [true, "never-prefix"],
     "member-access": false,
-    "no-console": false
+    "no-console": false,
+    "jsx-boolean-value": false
   },
   "linterOptions": {
     "exclude": [

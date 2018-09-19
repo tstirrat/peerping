@@ -1,9 +1,11 @@
+import { Typography } from '@rmwc/typography';
 import * as firebase from 'firebase/app';
 import * as React from 'react';
 import { Redirect, RouteComponentProps, withRouter } from 'react-router';
 import * as Peer from 'simple-peer';
 
 import { ConnectionStats } from './ConnectionStats';
+import { CodeBlock } from './Room.styles';
 
 export interface UrlParams {
   id: string;
@@ -14,7 +16,6 @@ export interface Props extends RouteComponentProps<UrlParams> {
 }
 
 export interface State {
-  peer?: Peer.Instance;
   meta?: string;
   connection?: RTCPeerConnection;
   goHome?: boolean;
@@ -55,7 +56,6 @@ export class Room extends React.Component<Props, State> {
             roomRef
           );
           (window as any).peer = peer;
-          this.setState({ peer });
         } else {
           this.setState({ goHome: true });
         }
@@ -82,18 +82,22 @@ export class Room extends React.Component<Props, State> {
       <>
         {goHome && <Redirect to="/" />}
 
-        <h1>Room</h1>
-        <h2>
-          <a href={url}>{url}</a>
-        </h2>
-        <p>
+        <Typography use="headline2" tag="h2">
+          Room link: <a href={url}>{url}</a>
+        </Typography>
+        <Typography use="body1" tag="p">
           Give the room link to a friend to see the ping value between your
           devices
-        </p>
+        </Typography>
+
         {connection ? <ConnectionStats connection={connection} /> : null}
 
-        <h4>Debug</h4>
-        <pre>{meta}</pre>
+        <Typography use="headline4" tag="h4">
+          Debug
+        </Typography>
+        <CodeBlock use="caption" tag="pre">
+          {meta}
+        </CodeBlock>
       </>
     );
   }

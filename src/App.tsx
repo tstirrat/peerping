@@ -1,8 +1,10 @@
+import 'material-components-web/dist/material-components-web.css';
+
+import { SimpleTopAppBar, TopAppBarFixedAdjust } from '@rmwc/top-app-bar';
 import * as firebase from 'firebase/app';
 import * as React from 'react';
 import {
   BrowserRouter as Router,
-  Link,
   Route,
   RouteComponentProps,
   RouteProps,
@@ -10,9 +12,7 @@ import {
 } from 'react-router-dom';
 import pure from 'recompose/pure';
 
-import { Header, Logo, Title } from './App.styles';
 import { Home } from './Home';
-import logo from './logo.svg';
 import { RoomRoute } from './Room';
 
 export interface State {
@@ -28,12 +28,8 @@ export class App extends React.Component {
     return (
       <Router>
         <div>
-          <Header>
-            <Link to="/">
-              <Logo src={logo} alt="logo" />
-            </Link>
-            <Title>Peer Ping</Title>
-          </Header>
+          <SimpleTopAppBar fixed={true} title="Peer Ping" />
+          <TopAppBarFixedAdjust />
           {user ? (
             <Switch>
               <UserRoute path="/:id" component={RoomRoute} user={user} />
@@ -73,12 +69,7 @@ export interface UserRouteProps extends RouteProps {
 
 const UserRoute = pure(
   ({ user, component: Component, ...rest }: UserRouteProps) => {
-    return (
-      <Route
-        {...rest}
-        // tslint:disable-next-line:jsx-no-lambda
-        render={props => <Component {...props} user={user} />}
-      />
-    );
+    const render = (props: any) => <Component {...props} user={user} />;
+    return <Route {...rest} render={render} />;
   }
 );
