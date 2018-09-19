@@ -1,6 +1,14 @@
 import 'material-components-web/dist/material-components-web.css';
 
-import { SimpleTopAppBar, TopAppBarFixedAdjust } from '@rmwc/top-app-bar';
+import {
+  TopAppBar,
+  TopAppBarFixedAdjust,
+  TopAppBarNavigationIcon,
+  TopAppBarRow,
+  TopAppBarSection,
+  TopAppBarTitle
+} from '@rmwc/top-app-bar';
+import { Typography } from '@rmwc/typography';
 import * as firebase from 'firebase/app';
 import * as React from 'react';
 import {
@@ -8,8 +16,10 @@ import {
   Route,
   RouteComponentProps,
   RouteProps,
-  Switch
+  Switch,
+  withRouter
 } from 'react-router-dom';
+import onlyUpdateForKeys from 'recompose/onlyUpdateForKeys';
 import pure from 'recompose/pure';
 
 import { Home } from './Home';
@@ -28,7 +38,14 @@ export class App extends React.Component {
     return (
       <Router>
         <div>
-          <SimpleTopAppBar fixed={true} title="Peer Ping" />
+          <TopAppBar role="navigation" fixed={true}>
+            <TopAppBarRow>
+              <TopAppBarSection alignStart>
+                <HomeIcon />
+                <TopAppBarTitle>Peer ping</TopAppBarTitle>
+              </TopAppBarSection>
+            </TopAppBarRow>
+          </TopAppBar>
           <TopAppBarFixedAdjust />
           {user ? (
             <Switch>
@@ -36,7 +53,9 @@ export class App extends React.Component {
               <UserRoute path="/" component={Home} user={user} />
             </Switch>
           ) : (
-            <p>Loading...</p>
+            <Typography use="body2" tag="p">
+              Loading...
+            </Typography>
           )}
         </div>
       </Router>
@@ -59,6 +78,14 @@ export class App extends React.Component {
     this.userUnsub();
   }
 }
+
+const neverUpdate = onlyUpdateForKeys([]);
+const HomeIcon = neverUpdate(
+  withRouter(({ history }) => (
+    // tslint:disable-next-line:jsx-no-lambda
+    <TopAppBarNavigationIcon icon="home" onClick={() => history.push('/')} />
+  ))
+);
 
 export interface UserRouteProps extends RouteProps {
   user: firebase.User;

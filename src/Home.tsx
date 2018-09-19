@@ -7,27 +7,24 @@ import { RouteComponentProps } from 'react-router';
 
 import { RoomData, RoomStatus } from './Room';
 
-// import * as PropTypes from 'prop-types';
 export interface Props extends RouteComponentProps {
   user: firebase.User;
 }
 
-export class Home extends React.Component<Props> {
+export class Home extends React.PureComponent<Props> {
   render() {
     return (
-      <>
-        <Typography use="headline1" tag="h1">
+      <main role="main" aria-labelledby="app-title">
+        <Typography use="headline1" tag="h1" id="app-title">
           Peer ping
         </Typography>
         <Typography use="body1" tag="p">
           Measure the latency between two peers
         </Typography>
-        <form>
-          <Button raised type="button" onClick={this.createRoomClicked}>
-            Create room
-          </Button>
-        </form>
-      </>
+        <Button raised type="button" onClick={this.createRoomClicked}>
+          Create room
+        </Button>
+      </main>
     );
   }
 
@@ -45,6 +42,6 @@ export class Home extends React.Component<Props> {
       .ref()
       .child(`rooms/${id}`)
       .set(room)
-      .then(() => history.push(`/${id}`)); // TODO: use react-router
+      .then(() => history.push(`/${id}`));
   };
 }

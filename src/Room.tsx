@@ -34,7 +34,7 @@ export interface RoomData {
   status: RoomStatus;
 }
 
-export class Room extends React.Component<Props, State> {
+export class Room extends React.PureComponent<Props, State> {
   state: State = {};
 
   componentDidMount() {
@@ -79,26 +79,29 @@ export class Room extends React.Component<Props, State> {
     const id = this.props.match.params.id;
     const url = `${process.env.REACT_APP_PUBLIC_URL}/${id}`;
     return (
-      <>
+      <main role="main">
         {goHome && <Redirect to="/" />}
 
-        <Typography use="headline2" tag="h2">
-          Room link: <a href={url}>{url}</a>
-        </Typography>
         <Typography use="body1" tag="p">
           Give the room link to a friend to see the ping value between your
           devices
         </Typography>
 
+        <Typography use="body2" tag="p">
+          Room link: <a href={url}>{url}</a>
+        </Typography>
+
         {connection ? <ConnectionStats connection={connection} /> : null}
 
-        <Typography use="headline4" tag="h4">
-          Debug
-        </Typography>
-        <CodeBlock use="caption" tag="pre">
-          {meta}
-        </CodeBlock>
-      </>
+        <aside role="contentinfo">
+          <Typography use="headline4" tag="h1">
+            Debug
+          </Typography>
+          <CodeBlock use="caption" tag="pre">
+            {meta}
+          </CodeBlock>
+        </aside>
+      </main>
     );
   }
 

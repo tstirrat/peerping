@@ -1,3 +1,4 @@
+import { Typography } from '@rmwc/typography';
 import * as React from 'react';
 import { Subject, timer } from 'rxjs';
 import { switchMap, takeUntil } from 'rxjs/operators';
@@ -32,7 +33,7 @@ function getLatency(
   });
 }
 
-export class ConnectionStats extends React.Component<Props, State> {
+export class ConnectionStats extends React.PureComponent<Props, State> {
   state: State = {};
 
   private destroy$ = new Subject<void>();
@@ -56,9 +57,9 @@ export class ConnectionStats extends React.Component<Props, State> {
     const { latencyMs } = this.state;
 
     return (
-      <div>
+      <Typography use="body1" tag="p">
         Latency: <span>{latencyMs}</span>
-      </div>
+      </Typography>
     );
   }
 }
