@@ -560,306 +560,306 @@
   version "0.39.0"
   resolved "https://registry.yarnpkg.com/@material/typography/-/typography-0.39.0.tgz#7d7468673e104609d926528ffe5571cfd44d8c3c"
 
-"@rmwc/base@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/base/-/base-2.1.2.tgz#4a0ed949a8fa5c3d5411159c6375fa333756b745"
+"@rmwc/base@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/base/-/base-2.1.3.tgz#380702c76e0ef2343e325476627c72dc3e28c1fb"
   dependencies:
     classnames "^2.2.5"
     hyperform "^0.9.9"
     mutation-observer "^1.0.3"
 
-"@rmwc/button@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/button/-/button-2.1.2.tgz#615e372e6b9c3e3c533fa001cde2554aff73f5d6"
+"@rmwc/button@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/button/-/button-2.1.3.tgz#ded30efcb1d51bf38cd99f911e9b84eae924d94d"
   dependencies:
     "@material/button" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
-    "@rmwc/icon" "^2.1.2"
-    "@rmwc/provider" "^2.1.0"
-    "@rmwc/ripple" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
+    "@rmwc/icon" "^2.1.3"
+    "@rmwc/provider" "^2.1.3"
+    "@rmwc/ripple" "^2.1.3"
     prop-types "^15.6.1"
 
-"@rmwc/card@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/card/-/card-2.1.2.tgz#e48072ecfeb5e385a7f346d4b7becc796773292d"
+"@rmwc/card@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/card/-/card-2.1.3.tgz#2f7ddec4539bc963b107ab7737be4cc42ec21877"
   dependencies:
     "@material/card" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
-    "@rmwc/button" "^2.1.2"
-    "@rmwc/icon-button" "^2.1.2"
-    "@rmwc/ripple" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
+    "@rmwc/button" "^2.1.3"
+    "@rmwc/icon-button" "^2.1.3"
+    "@rmwc/ripple" "^2.1.3"
 
-"@rmwc/checkbox@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/checkbox/-/checkbox-2.1.2.tgz#6070e8d05244d031cb6c0411f9f7cbdfb349143a"
+"@rmwc/checkbox@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/checkbox/-/checkbox-2.1.3.tgz#70aab64ef3b803c2748c8bd029fc36a58c93fc3f"
   dependencies:
     "@material/checkbox" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
-    "@rmwc/formfield" "^2.1.2"
-    "@rmwc/ripple" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
+    "@rmwc/formfield" "^2.1.3"
+    "@rmwc/ripple" "^2.1.3"
 
-"@rmwc/chip@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/chip/-/chip-2.1.2.tgz#ea12a95ec49abde6338532b0b309d0f51df2f12f"
+"@rmwc/chip@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/chip/-/chip-2.1.3.tgz#0200f652024ca0c45a2699c7155ba1f0dfdfff08"
   dependencies:
     "@material/chips" "~0.39.0"
     "@material/ripple" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
-    "@rmwc/icon" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
+    "@rmwc/icon" "^2.1.3"
 
-"@rmwc/data-table@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/data-table/-/data-table-2.1.2.tgz#46f7a53659b1d585d3909f391f02dcc3099d0466"
+"@rmwc/data-table@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/data-table/-/data-table-2.1.3.tgz#a0f27c81641c2338fff248c618b93af1ad66d23b"
   dependencies:
-    "@rmwc/base" "^2.1.2"
-    "@rmwc/icon" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
+    "@rmwc/icon" "^2.1.3"
 
-"@rmwc/dialog@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/dialog/-/dialog-2.1.2.tgz#f47ba8f95b306509df1f1cc029f52ff81b345a04"
+"@rmwc/dialog@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/dialog/-/dialog-2.1.3.tgz#87ebb26688060a07d2f08461ef2f05aa1083f04a"
   dependencies:
     "@material/dialog" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
-    "@rmwc/button" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
+    "@rmwc/button" "^2.1.3"
 
-"@rmwc/drawer@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/drawer/-/drawer-2.1.2.tgz#83ffe288f5d29dbd19034768779fedf3163c61c2"
+"@rmwc/drawer@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/drawer/-/drawer-2.1.3.tgz#cd52c46a49a9d18b8a899846b75cfc1695465686"
   dependencies:
     "@material/drawer" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
 
-"@rmwc/elevation@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/elevation/-/elevation-2.1.2.tgz#2373246751fbd0fc565451e3c02bb94fd9ccd94c"
+"@rmwc/elevation@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/elevation/-/elevation-2.1.3.tgz#35a946c5ad4206898a4c1faa16605315a81f6308"
   dependencies:
     "@material/elevation" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
 
-"@rmwc/fab@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/fab/-/fab-2.1.2.tgz#8e4b22199160bf85c8108d5c314d52d12c26de92"
+"@rmwc/fab@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/fab/-/fab-2.1.3.tgz#0cc361afbed271aacb8f25e5477a37caadb6cf41"
   dependencies:
     "@material/fab" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
-    "@rmwc/icon" "^2.1.2"
-    "@rmwc/provider" "^2.1.0"
-    "@rmwc/ripple" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
+    "@rmwc/icon" "^2.1.3"
+    "@rmwc/provider" "^2.1.3"
+    "@rmwc/ripple" "^2.1.3"
     classnames "^2.2.5"
     prop-types "^15.6.1"
 
-"@rmwc/floating-label@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/floating-label/-/floating-label-2.1.2.tgz#295dd10c4d1276e3b844aaeca6cec81904f3c098"
+"@rmwc/floating-label@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/floating-label/-/floating-label-2.1.3.tgz#7f3c02eaeab68ea2900d5defe232d0c72d7de395"
   dependencies:
     "@material/floating-label" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
 
-"@rmwc/formfield@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/formfield/-/formfield-2.1.2.tgz#9f600bf0412303480fb24f896438a9d863661301"
+"@rmwc/formfield@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/formfield/-/formfield-2.1.3.tgz#4d022496a6d06fabdb3fa96b98d07d8e9c4920b1"
   dependencies:
     "@material/form-field" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
 
-"@rmwc/grid-list@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/grid-list/-/grid-list-2.1.2.tgz#880359bebe7a054dc25dac9e1c9b798cd62ca472"
+"@rmwc/grid-list@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/grid-list/-/grid-list-2.1.3.tgz#e4ff1eb15bd6eab864bd8e1d08e0f681d25c8d53"
   dependencies:
     "@material/grid-list" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
-    "@rmwc/icon" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
+    "@rmwc/icon" "^2.1.3"
 
-"@rmwc/grid@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/grid/-/grid-2.1.2.tgz#586993c16dc4af9ed6046018c4321e2e4a472a3e"
+"@rmwc/grid@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/grid/-/grid-2.1.3.tgz#6be8d7cdc04d502dcfebfc49e466054f0140cb1c"
   dependencies:
     "@material/layout-grid" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
 
-"@rmwc/icon-button@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/icon-button/-/icon-button-2.1.2.tgz#92e4b380d62f1601ca484d298dba73fc34018311"
+"@rmwc/icon-button@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/icon-button/-/icon-button-2.1.3.tgz#d52aeb0ef940ae5673453280d652c654044f0d7e"
   dependencies:
     "@material/icon-button" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
-    "@rmwc/icon" "^2.1.2"
-    "@rmwc/ripple" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
+    "@rmwc/icon" "^2.1.3"
+    "@rmwc/ripple" "^2.1.3"
 
-"@rmwc/icon@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/icon/-/icon-2.1.2.tgz#a1abdba03e425602b046d2cfb7c8d56dd83a2f12"
+"@rmwc/icon@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/icon/-/icon-2.1.3.tgz#eec4af0084617ed343a089ef19cf08b2513ebce6"
   dependencies:
-    "@rmwc/base" "^2.1.2"
-    "@rmwc/provider" "^2.1.0"
+    "@rmwc/base" "^2.1.3"
+    "@rmwc/provider" "^2.1.3"
     classnames "^2.2.5"
     prop-types "^15.6.1"
 
-"@rmwc/image-list@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/image-list/-/image-list-2.1.2.tgz#af417c5c424ea6c2f63d08a73681156f582f2e62"
+"@rmwc/image-list@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/image-list/-/image-list-2.1.3.tgz#fc6e2f7cb818c0aab97bc4ed54164c568f560e37"
   dependencies:
     "@material/image-list" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
 
-"@rmwc/line-ripple@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/line-ripple/-/line-ripple-2.1.2.tgz#847ec2bf18ba0f85c91559de5727ca92d92aac3c"
+"@rmwc/line-ripple@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/line-ripple/-/line-ripple-2.1.3.tgz#1fd620e4cd9ee4b59db0552a552c82d9b2d580d0"
   dependencies:
     "@material/line-ripple" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
 
-"@rmwc/linear-progress@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/linear-progress/-/linear-progress-2.1.2.tgz#789d3a46b0aee1df0621f4b04f9479647498c7e8"
+"@rmwc/linear-progress@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/linear-progress/-/linear-progress-2.1.3.tgz#8cf26fdb6595f50ae4bc519d5ba853793299fa02"
   dependencies:
     "@material/linear-progress" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
 
-"@rmwc/list@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/list/-/list-2.1.2.tgz#f3f05be6664fc963ce986417e7e61e9d15b8e8e0"
+"@rmwc/list@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/list/-/list-2.1.3.tgz#17ed29df73e13e04a54cb45be3011ccdf99e1c41"
   dependencies:
     "@material/list" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
-    "@rmwc/icon" "^2.1.2"
-    "@rmwc/provider" "^2.1.0"
-    "@rmwc/ripple" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
+    "@rmwc/icon" "^2.1.3"
+    "@rmwc/provider" "^2.1.3"
+    "@rmwc/ripple" "^2.1.3"
     classnames "^2.2.5"
     prop-types "^15.6.1"
 
-"@rmwc/menu@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/menu/-/menu-2.1.2.tgz#d31504c68b42437e363dc60bb16d5319c26c1e71"
+"@rmwc/menu@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/menu/-/menu-2.1.3.tgz#db5e028d205544199243be955b6d83cf521a05d6"
   dependencies:
     "@material/menu" "~0.39.0"
     "@material/menu-surface" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
-    "@rmwc/list" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
+    "@rmwc/list" "^2.1.3"
 
-"@rmwc/notched-outline@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/notched-outline/-/notched-outline-2.0.2.tgz#d77afac646dcc0fdbeaa2a4fd122bbb4eff80afe"
+"@rmwc/notched-outline@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/notched-outline/-/notched-outline-2.1.3.tgz#c7e8c4e527765ca68b5a6d54b5caa9b07322831f"
   dependencies:
     "@material/notched-outline" "~0.39.0"
 
-"@rmwc/provider@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@rmwc/provider/-/provider-2.1.0.tgz#48426f0ad0708c65e198669dff6c96109d6ee676"
+"@rmwc/provider@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/provider/-/provider-2.1.3.tgz#79ed079fd5f17d29186f3b0c51066f8cb4cd1bb8"
   dependencies:
     prop-types "^15.6.1"
 
-"@rmwc/radio@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/radio/-/radio-2.1.2.tgz#9b5613af02622cbd1741ecd09021586e9d4af008"
+"@rmwc/radio@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/radio/-/radio-2.1.3.tgz#c6b217cc6ba4f2a4470606b23171161cadf90158"
   dependencies:
     "@material/radio" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
-    "@rmwc/formfield" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
+    "@rmwc/formfield" "^2.1.3"
 
-"@rmwc/ripple@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/ripple/-/ripple-2.1.2.tgz#d119edfeba64293c537f51b63b855680c6ee08d9"
+"@rmwc/ripple@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/ripple/-/ripple-2.1.3.tgz#8e0cf011126d138a29578b0e1ac084ac674652f1"
   dependencies:
     "@material/ripple" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
     classnames "^2.2.5"
 
-"@rmwc/select@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/select/-/select-2.1.2.tgz#20f173a2bf129c5199c77cbd2328d370c6ea1d19"
+"@rmwc/select@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/select/-/select-2.1.3.tgz#471f004f181c7e14888e295c5d6f4190b87a5b64"
   dependencies:
     "@material/select" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
-    "@rmwc/floating-label" "^2.1.2"
-    "@rmwc/line-ripple" "^2.1.2"
-    "@rmwc/notched-outline" "^2.0.2"
+    "@rmwc/base" "^2.1.3"
+    "@rmwc/floating-label" "^2.1.3"
+    "@rmwc/line-ripple" "^2.1.3"
+    "@rmwc/notched-outline" "^2.1.3"
 
-"@rmwc/shape@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/shape/-/shape-2.1.2.tgz#bbea7a1cfb61f7f762c0c2a0dd39ae76ae1af1fe"
+"@rmwc/shape@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/shape/-/shape-2.1.3.tgz#56e71f34b99e53bf061fc5a430543277e3dd1af4"
   dependencies:
     "@material/shape" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
     classnames "^2.2.5"
 
-"@rmwc/slider@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/slider/-/slider-2.1.2.tgz#bdf982e2e8fda06630c8f802fa1505b27fdb9887"
+"@rmwc/slider@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/slider/-/slider-2.1.3.tgz#292ec228dab573b52db4b76b1f52f21007feb8cf"
   dependencies:
     "@material/slider" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
 
-"@rmwc/snackbar@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/snackbar/-/snackbar-2.1.2.tgz#4b26f0d61ddc8717bb48b6d63ae382e1d70366cd"
+"@rmwc/snackbar@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/snackbar/-/snackbar-2.1.3.tgz#9ec820728873c45036e5a92dcf90463f575075b0"
   dependencies:
     "@material/animation" "~0.39.0"
     "@material/snackbar" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
-    "@rmwc/button" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
+    "@rmwc/button" "^2.1.3"
 
-"@rmwc/switch@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/switch/-/switch-2.1.2.tgz#0d2b4641ee4e19daf7e065e5c9b5a3305367ccfa"
+"@rmwc/switch@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/switch/-/switch-2.1.3.tgz#bd3eef64a73b824e2f2e62bdd36677fcfeac60a2"
   dependencies:
     "@material/switch" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
-    "@rmwc/button" "^2.1.2"
-    "@rmwc/formfield" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
+    "@rmwc/button" "^2.1.3"
+    "@rmwc/formfield" "^2.1.3"
     classnames "^2.2.5"
 
-"@rmwc/tabs@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/tabs/-/tabs-2.1.2.tgz#0f1f9ca8773a7fa9e4ddd03a98a829e5ee6bbe77"
+"@rmwc/tabs@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/tabs/-/tabs-2.1.3.tgz#2d82fcd855e95fdb3bd2358d501cebadf25fefc4"
   dependencies:
     "@material/tab" "~0.39.0"
     "@material/tab-bar" "~0.39.0"
     "@material/tab-indicator" "~0.39.0"
     "@material/tab-scroller" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
-    "@rmwc/icon" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
+    "@rmwc/icon" "^2.1.3"
 
-"@rmwc/textfield@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/textfield/-/textfield-2.1.2.tgz#82927bf57840a43beb193ac4bcd3a58974e837ee"
+"@rmwc/textfield@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/textfield/-/textfield-2.1.3.tgz#3b7214b2bcf661a0951d25ed2587b5c3772fc4bc"
   dependencies:
     "@material/textfield" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
-    "@rmwc/floating-label" "^2.1.2"
-    "@rmwc/icon" "^2.1.2"
-    "@rmwc/line-ripple" "^2.1.2"
-    "@rmwc/notched-outline" "^2.0.2"
+    "@rmwc/base" "^2.1.3"
+    "@rmwc/floating-label" "^2.1.3"
+    "@rmwc/icon" "^2.1.3"
+    "@rmwc/line-ripple" "^2.1.3"
+    "@rmwc/notched-outline" "^2.1.3"
 
-"@rmwc/theme@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/theme/-/theme-2.1.2.tgz#93fadefc9b95dcb78ef6d8630333d9edcc92f269"
+"@rmwc/theme@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/theme/-/theme-2.1.3.tgz#123eed73e85caaeccf17dd79b8dd2d3d685ba376"
   dependencies:
     "@material/theme" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
 
-"@rmwc/toolbar@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/toolbar/-/toolbar-2.1.2.tgz#dc5b4ffd015532d0cb5e67d3080ec5c1e4eebbfe"
+"@rmwc/toolbar@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/toolbar/-/toolbar-2.1.3.tgz#bd620fa0b1a859422b06e3e2c6f796124110567b"
   dependencies:
     "@material/toolbar" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
-    "@rmwc/icon" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
+    "@rmwc/icon" "^2.1.3"
 
-"@rmwc/top-app-bar@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/top-app-bar/-/top-app-bar-2.1.2.tgz#d549f1812eab5b4b18500c2a86d132bd2e8c57c5"
+"@rmwc/top-app-bar@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/top-app-bar/-/top-app-bar-2.1.3.tgz#3f8b1697c6c489d69cf57d6467e2fff6e6b257fb"
   dependencies:
     "@material/top-app-bar" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
-    "@rmwc/icon" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
+    "@rmwc/icon" "^2.1.3"
 
-"@rmwc/typography@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@rmwc/typography/-/typography-2.1.2.tgz#74376ba29f8b2fbd91d71af79228ba2a5bb02882"
+"@rmwc/typography@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@rmwc/typography/-/typography-2.1.3.tgz#f6a98382ca02b142f4aa606bbce4b9f520508c02"
   dependencies:
     "@material/typography" "~0.39.0"
-    "@rmwc/base" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
 
 "@types/history@*":
   version "4.7.0"
@@ -7189,46 +7189,46 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-rmwc@^2.1.1:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/rmwc/-/rmwc-2.1.2.tgz#82ff71d4bf214b4b5faccc72c3206128fa29388b"
+rmwc@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/rmwc/-/rmwc-2.1.3.tgz#e4d4baa6db851ad63952c278a31afab41142f856"
   dependencies:
-    "@rmwc/base" "^2.1.2"
-    "@rmwc/button" "^2.1.2"
-    "@rmwc/card" "^2.1.2"
-    "@rmwc/checkbox" "^2.1.2"
-    "@rmwc/chip" "^2.1.2"
-    "@rmwc/data-table" "^2.1.2"
-    "@rmwc/dialog" "^2.1.2"
-    "@rmwc/drawer" "^2.1.2"
-    "@rmwc/elevation" "^2.1.2"
-    "@rmwc/fab" "^2.1.2"
-    "@rmwc/floating-label" "^2.1.2"
-    "@rmwc/formfield" "^2.1.2"
-    "@rmwc/grid" "^2.1.2"
-    "@rmwc/grid-list" "^2.1.2"
-    "@rmwc/icon" "^2.1.2"
-    "@rmwc/icon-button" "^2.1.2"
-    "@rmwc/image-list" "^2.1.2"
-    "@rmwc/line-ripple" "^2.1.2"
-    "@rmwc/linear-progress" "^2.1.2"
-    "@rmwc/list" "^2.1.2"
-    "@rmwc/menu" "^2.1.2"
-    "@rmwc/notched-outline" "^2.0.2"
-    "@rmwc/provider" "^2.1.0"
-    "@rmwc/radio" "^2.1.2"
-    "@rmwc/ripple" "^2.1.2"
-    "@rmwc/select" "^2.1.2"
-    "@rmwc/shape" "^2.1.2"
-    "@rmwc/slider" "^2.1.2"
-    "@rmwc/snackbar" "^2.1.2"
-    "@rmwc/switch" "^2.1.2"
-    "@rmwc/tabs" "^2.1.2"
-    "@rmwc/textfield" "^2.1.2"
-    "@rmwc/theme" "^2.1.2"
-    "@rmwc/toolbar" "^2.1.2"
-    "@rmwc/top-app-bar" "^2.1.2"
-    "@rmwc/typography" "^2.1.2"
+    "@rmwc/base" "^2.1.3"
+    "@rmwc/button" "^2.1.3"
+    "@rmwc/card" "^2.1.3"
+    "@rmwc/checkbox" "^2.1.3"
+    "@rmwc/chip" "^2.1.3"
+    "@rmwc/data-table" "^2.1.3"
+    "@rmwc/dialog" "^2.1.3"
+    "@rmwc/drawer" "^2.1.3"
+    "@rmwc/elevation" "^2.1.3"
+    "@rmwc/fab" "^2.1.3"
+    "@rmwc/floating-label" "^2.1.3"
+    "@rmwc/formfield" "^2.1.3"
+    "@rmwc/grid" "^2.1.3"
+    "@rmwc/grid-list" "^2.1.3"
+    "@rmwc/icon" "^2.1.3"
+    "@rmwc/icon-button" "^2.1.3"
+    "@rmwc/image-list" "^2.1.3"
+    "@rmwc/line-ripple" "^2.1.3"
+    "@rmwc/linear-progress" "^2.1.3"
+    "@rmwc/list" "^2.1.3"
+    "@rmwc/menu" "^2.1.3"
+    "@rmwc/notched-outline" "^2.1.3"
+    "@rmwc/provider" "^2.1.3"
+    "@rmwc/radio" "^2.1.3"
+    "@rmwc/ripple" "^2.1.3"
+    "@rmwc/select" "^2.1.3"
+    "@rmwc/shape" "^2.1.3"
+    "@rmwc/slider" "^2.1.3"
+    "@rmwc/snackbar" "^2.1.3"
+    "@rmwc/switch" "^2.1.3"
+    "@rmwc/tabs" "^2.1.3"
+    "@rmwc/textfield" "^2.1.3"
+    "@rmwc/theme" "^2.1.3"
+    "@rmwc/toolbar" "^2.1.3"
+    "@rmwc/top-app-bar" "^2.1.3"
+    "@rmwc/typography" "^2.1.3"
     material-components-web "~0.39.0"
 
 rsvp@^3.3.3:
