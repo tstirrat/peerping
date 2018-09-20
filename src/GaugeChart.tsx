@@ -2,12 +2,6 @@ import * as React from 'react';
 import { Cell, Pie, PieChart, PieProps, Sector } from 'recharts';
 import pure from 'recompose/pure';
 
-export interface Props {
-  width?: number;
-  value: number;
-  colorData?: ColorData[];
-}
-
 export interface ColorData {
   color: string;
   value: number;
@@ -15,19 +9,19 @@ export interface ColorData {
 
 const defaultColorData: ColorData[] = [
   {
-    color: '#663399',
+    color: '#FF8042',
     value: 650
   },
   {
-    color: '#e91e63',
+    color: '#FFBB28',
     value: 200
   },
   {
-    color: '#ff9800',
+    color: '#0088FE',
     value: 100
   },
   {
-    color: '#4caf50',
+    color: '#00C49F',
     value: 50
   }
 ];
@@ -55,6 +49,12 @@ const ActiveSectorMark: React.StatelessComponent<PieProps> = ({
     </g>
   );
 };
+
+export interface Props {
+  width?: number;
+  value: number;
+  colorData?: ColorData[];
+}
 
 /**
  * Gauge chart
@@ -91,7 +91,7 @@ export const GaugeChart = pure<Props>(
     };
 
     const pieRadius: Partial<PieProps> = {
-      innerRadius: (width / 2) * 0.35,
+      innerRadius: (width / 2) * 0.3,
       outerRadius: (width / 2) * 0.4
     };
 
@@ -128,6 +128,7 @@ export const GaugeChart = pure<Props>(
           data={colorData}
           fill="#8884d8"
           dataKey="value"
+          paddingAngle={2}
           {...pieRadius}
           {...pieProps}
         >
