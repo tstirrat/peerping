@@ -30,7 +30,7 @@ export const Txt = pure<Props>(
         tag={TAG_MAP[use]}
         use={use}
         {...rest}
-        theme={`${theme} onSurface`}
+        theme={theme || 'onSurface'}
       >
         {children}
       </Typography>
