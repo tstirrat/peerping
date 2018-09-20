@@ -82,7 +82,7 @@ export class Room extends React.PureComponent<Props, State> {
     const { id } = this.props;
     const url = `${process.env.REACT_APP_PUBLIC_URL}/${id}`;
     return (
-      <Card role="main" style={{ margin: '0 auto', width: '900px' }}>
+      <Card tag="main" role="main" style={{ margin: '0 auto', width: '900px' }}>
         {goHome && <Redirect to="/" />}
 
         <Txt>
