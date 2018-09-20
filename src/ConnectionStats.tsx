@@ -1,7 +1,7 @@
-import { Typography } from '@rmwc/typography';
 import * as React from 'react';
 import { Subject, timer } from 'rxjs';
 import { switchMap, takeUntil } from 'rxjs/operators';
+import { Txt } from './Txt';
 
 export interface Props {
   connection: RTCPeerConnection;
@@ -57,9 +57,9 @@ export class ConnectionStats extends React.PureComponent<Props, State> {
     const { latencyMs } = this.state;
 
     return (
-      <Typography use="body1" tag="p">
+      <Txt>
         Latency: <span>{latencyMs}</span>
-      </Typography>
+      </Txt>
     );
   }
 }

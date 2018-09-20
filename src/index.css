@@ -1,19 +1,13 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
 }
 
 :root {
-  --mdc-theme-primary: #2196f3;
-  --mdc-theme-secondary: #ff9100;
-  /* --mdc-theme-on-primary: white;
-  --mdc-theme-text-on-primary: white;
+  --mdc-theme-background: #263238; /* blue grey 900 */
+}
 
-  --mdc-theme-background: #282828;
-
-  --mdc-theme-on-secondary: #969696;
-
-  --mdc-theme-surface: #282828;
-  --mdc-theme-on-surface: #969696; */
+a:link,
+a:visited {
+  color: var(--mdc-theme-primary, #fff);
 }

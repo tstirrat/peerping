@@ -1,18 +1,20 @@
-import { Typography } from '@rmwc/typography';
+import { Card } from '@rmwc/card';
 import * as firebase from 'firebase/app';
 import * as React from 'react';
-import { Redirect, RouteComponentProps, withRouter } from 'react-router';
+import { Redirect } from 'react-router';
 import * as Peer from 'simple-peer';
 
 import { ConnectionStats } from './ConnectionStats';
 import { CodeBlock } from './Room.styles';
+import { Txt } from './Txt';
 
 export interface UrlParams {
   id: string;
 }
 
-export interface Props extends RouteComponentProps<UrlParams> {
+export interface Props {
   user: firebase.User;
+  id: string;
 }
 
 export interface State {
@@ -40,8 +42,7 @@ export class Room extends React.PureComponent<Props, State> {
   state: State = {};
 
   componentDidMount() {
-    const { match, user } = this.props;
-    const id = match.params.id;
+    const { id, user } = this.props;
 
     const db = firebase.database();
 
@@ -70,7 +71,7 @@ export class Room extends React.PureComponent<Props, State> {
   }
 
   componentWillUnmount() {
-    const id = this.props.match.params.id;
+    const { id } = this.props;
     const db = firebase.database();
     const roomRef = db.ref(`rooms/${id}`);
     roomRef.off('value');
@@ -78,32 +79,32 @@ export class Room extends React.PureComponent<Props, State> {
 
   render() {
     const { meta, connection, goHome } = this.state;
-    const id = this.props.match.params.id;
+    const { id } = this.props;
     const url = `${process.env.REACT_APP_PUBLIC_URL}/${id}`;
     return (
-      <main role="main">
+      <Card role="main" style={{ margin: '0 auto', width: '900px' }}>
         {goHome && <Redirect to="/" />}
 
-        <Typography use="body1" tag="p">
+        <Txt>
           Give the room link to a friend to see the ping value between your
           devices
-        </Typography>
+        </Txt>
 
-        <Typography use="body2" tag="p">
+        <Txt use="body2">
           Room link: <a href={url}>{url}</a>
-        </Typography>
+        </Txt>
 
         {connection ? <ConnectionStats connection={connection} /> : null}
 
-        <aside role="contentinfo">
-          <Typography use="headline4" tag="h1">
+        <aside>
+          <Txt use="headline4" tag="h1">
             Debug
-          </Typography>
+          </Txt>
           <CodeBlock use="caption" tag="pre">
             {meta}
           </CodeBlock>
         </aside>
-      </main>
+      </Card>
     );
   }
 
@@ -192,5 +193,3 @@ export class Room extends React.PureComponent<Props, State> {
     console.table(filteredStats);
   }
 }
-
-export const RoomRoute = withRouter(Room);

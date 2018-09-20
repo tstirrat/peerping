@@ -1,11 +1,11 @@
 import Button from '@rmwc/button';
-import Typography from '@rmwc/typography';
 import * as firebase from 'firebase/app';
 import * as greg from 'greg';
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 
 import { RoomData, RoomStatus } from './Room';
+import { Txt } from './Txt';
 
 export interface Props extends RouteComponentProps {
   user: firebase.User;
@@ -15,12 +15,10 @@ export class Home extends React.PureComponent<Props> {
   render() {
     return (
       <main role="main" aria-labelledby="app-title">
-        <Typography use="headline1" tag="h1" id="app-title">
+        <Txt use="headline1" id="app-title">
           Peer ping
-        </Typography>
-        <Typography use="body1" tag="p">
-          Measure the latency between two peers
-        </Typography>
+        </Txt>
+        <Txt use="subtitle1">Measure the ping between two peers</Txt>
         <Button raised type="button" onClick={this.createRoomClicked}>
           Create room
         </Button>

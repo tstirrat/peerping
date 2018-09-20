@@ -1,23 +1,34 @@
-import { Typography } from '@rmwc/typography';
+import { ThemeProvider } from '@rmwc/theme';
 import * as firebase from 'firebase/app';
 import * as React from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  RouteComponentProps,
-  RouteProps,
-  Switch
-} from 'react-router-dom';
-import pure from 'recompose/pure';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { AppHeader } from './AppHeader';
 import { Home } from './Home';
-import { RoomRoute } from './Room';
+import { Room } from './Room';
+import { Txt } from './Txt';
 
 export interface State {
   user: firebase.User | null;
 }
 
+// tslint:disable:object-literal-sort-keys
+const THEME = {
+  // background: see index.css
+
+  surface: '#37474F', // blue grey 800
+  onSurface: 'rgba(255,255,255,.87)',
+
+  primary: '#b3e5fc', // light blue 100
+  // primary: '#81D4FA', // light blue 200
+
+  onPrimary: 'rgba(0,0,0,0.87)',
+
+  secondary: '#141a1d', // blue grey, darker than 900
+  onSecondary: 'rgba(255,255,255,.87)'
+};
+
+// tslint:disable:jsx-no-lambda
 export class App extends React.Component {
   state: State = { user: firebase.auth().currentUser };
   private userUnsub: firebase.Unsubscribe;
@@ -26,19 +37,25 @@ export class App extends React.Component {
     const { user } = this.state;
     return (
       <Router>
-        <div>
+        <ThemeProvider options={THEME}>
           <AppHeader />
           {user ? (
             <Switch>
-              <UserRoute path="/:id" component={RoomRoute} user={user} />
-              <UserRoute path="/" component={Home} user={user} />
+              <Route
+                path="/:id"
+                render={({ match }) => (
+                  <Room user={user} id={match.params.id} />
+                )}
+              />
+              <Route
+                path="/"
+                render={props => <Home user={user} {...props} />}
+              />
             </Switch>
           ) : (
-            <Typography use="body2" tag="p">
-              Loading...
-            </Typography>
+            <Txt use="body2">Loading...</Txt>
           )}
-        </div>
+        </ThemeProvider>
       </Router>
     );
   }
@@ -59,17 +76,3 @@ export class App extends React.Component {
     this.userUnsub();
   }
 }
-
-export interface UserRouteProps extends RouteProps {
-  user: firebase.User;
-  component:
-    | React.ComponentType<RouteComponentProps<any>>
-    | React.ComponentType<any>;
-}
-
-const UserRoute = pure(
-  ({ user, component: Component, ...rest }: UserRouteProps) => {
-    const render = (props: any) => <Component {...props} user={user} />;
-    return <Route {...rest} render={render} />;
-  }
-);

@@ -15,7 +15,7 @@ import pure from 'recompose/pure';
 
 export const AppHeader = pure(() => (
   <>
-    <TopAppBar fixed={true}>
+    <TopAppBar fixed={true} theme="secondaryBg onSecondary">
       <TopAppBarRow tag="nav" role="navigation">
         <TopAppBarSection alignStart>
           <HomeIcon />
@@ -36,6 +36,7 @@ const HomeIcon = neverUpdate(
       onClick={() => history.push('/')}
       tag="button"
       aria-label="Home"
+      theme="secondaryBg onSecondary"
     />
   ))
 );
