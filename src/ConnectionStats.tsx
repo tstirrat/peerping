@@ -3,6 +3,7 @@ import componentFromStream from 'recompose/componentFromStream';
 import { Observable, timer } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
+import { GaugeChart } from './GaugeChart';
 import { Txt } from './Txt';
 
 export interface Props {
@@ -10,28 +11,24 @@ export interface Props {
 }
 
 export interface State {
-  latencyMs?: number;
+  rtt?: number;
+}
+
+function convertRttToMs(seconds?: number) {
+  return seconds === undefined ? -1 : Math.floor(seconds * 1000);
 }
 
 export const RTT_PROP = 'currentRoundTripTime';
-function convertRttToMs(latency?: number) {
-  return latency === undefined ? NaN : Math.floor(latency * 1000);
-}
 
-function getLatency(
-  connection: RTCPeerConnection
-): Promise<number | undefined> {
+function getRtt(connection: RTCPeerConnection): Promise<number | undefined> {
   return connection.getStats().then(reports => {
-    let latencyMs;
+    let rtt: number | undefined;
     reports.forEach(report => {
-      if (
-        // report.type === 'candidate-pair' &&
-        RTT_PROP in report
-      ) {
-        latencyMs = convertRttToMs(report[RTT_PROP]);
+      if (report.type === 'candidate-pair') {
+        rtt = convertRttToMs(report[RTT_PROP]);
       }
     });
-    return latencyMs;
+    return rtt;
   });
 }
 
@@ -40,13 +37,19 @@ export const ConnectionStats = componentFromStream<Props>(props => {
   return props$.pipe(
     switchMap(({ connection }) => {
       return timer(0, 2000).pipe(
-        switchMap(() => getLatency(connection)),
-        map(latencyMs => (
-          <Txt>
-            Ping: <span>{latencyMs}</span>
-            ms
-          </Txt>
-        ))
+        switchMap(() => getRtt(connection)),
+        map((rtt = -1) => {
+          const invertedRtt = 1000 - Math.min(rtt, 1000);
+          return (
+            <>
+              <GaugeChart value={invertedRtt} />
+              <Txt>
+                Ping: <span>{rtt}</span>
+                ms
+              </Txt>
+            </>
+          );
+        })
       );
     })
   );
