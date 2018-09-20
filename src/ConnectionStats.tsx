@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { Subject, timer } from 'rxjs';
-import { switchMap, takeUntil } from 'rxjs/operators';
+import componentFromStream from 'recompose/componentFromStream';
+import { Observable, timer } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
+
 import { Txt } from './Txt';
 
 export interface Props {
@@ -33,33 +35,19 @@ function getLatency(
   });
 }
 
-export class ConnectionStats extends React.PureComponent<Props, State> {
-  state: State = {};
-
-  private destroy$ = new Subject<void>();
-
-  componentWillMount() {
-    const { connection } = this.props;
-
-    timer(0, 2000)
-      .pipe(
+export const ConnectionStats = componentFromStream<Props>(props => {
+  const props$ = props as Observable<Props>;
+  return props$.pipe(
+    switchMap(({ connection }) => {
+      return timer(0, 2000).pipe(
         switchMap(() => getLatency(connection)),
-        takeUntil(this.destroy$)
-      )
-      .subscribe(latency => this.setState({ latencyMs: latency }));
-  }
-
-  componentWillUnmount() {
-    this.destroy$.next(undefined);
-  }
-
-  render() {
-    const { latencyMs } = this.state;
-
-    return (
-      <Txt>
-        Latency: <span>{latencyMs}</span>
-      </Txt>
-    );
-  }
-}
+        map(latencyMs => (
+          <Txt>
+            Ping: <span>{latencyMs}</span>
+            ms
+          </Txt>
+        ))
+      );
+    })
+  );
+});
