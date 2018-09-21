@@ -1,4 +1,5 @@
 import Button from '@rmwc/button';
+import { Theme } from '@rmwc/theme';
 import * as firebase from 'firebase/app';
 import * as greg from 'greg';
 import * as React from 'react';
@@ -23,6 +24,9 @@ export class Home extends React.PureComponent<Props> {
         <Button raised onClick={this.createRoomClicked}>
           Create room
         </Button>
+        <Theme use="onPrimary" wrap={true}>
+          <a href="/">Test</a>
+        </Theme>
       </Main>
     );
   }
