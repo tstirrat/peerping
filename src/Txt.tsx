@@ -21,6 +21,7 @@ const TAG_MAP: { [K in TypographyPropsT['use']]?: string } = {
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 type OtherProps = Omit<TypographyPropsT, 'use'>;
 
+/** Standard props but use is now optional */
 export type Props = OtherProps & {
   use?: TypographyPropsT['use'];
 };
