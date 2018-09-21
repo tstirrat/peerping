@@ -8,8 +8,9 @@ export const Main = styled('main')`
 `;
 
 const TitleWithProps = defaultProps<Props>({
+  tag: 'h1',
   theme: 'primary',
-  use: 'headline1'
+  use: 'headline2'
 })(Txt);
 
 export const Title = styled(TitleWithProps)`

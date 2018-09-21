@@ -19,7 +19,9 @@ export class Home extends React.PureComponent<Props> {
         <Title id="app-title" theme="primary">
           Peer ping
         </Title>
-        <Txt use="subtitle1">Measure the ping between two peers</Txt>
+        <Txt use="headline5" tag="p">
+          Measure the ping between two peers
+        </Txt>
         <Button raised onClick={this.createRoomClicked}>
           Create room
         </Button>
