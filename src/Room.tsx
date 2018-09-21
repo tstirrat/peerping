@@ -83,7 +83,7 @@ export class Room extends React.PureComponent<Props, State> {
   render() {
     const { meta, connection, goHome, showDebug } = this.state;
     const { id } = this.props;
-    const url = `${process.env.REACT_APP_PUBLIC_URL}/${id}`;
+    const url = `${process.env.REACT_APP_PUBLIC_URL}/test/${id}`;
     return (
       <MainCard>
         <CardContent>
