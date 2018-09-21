@@ -41,6 +41,6 @@ export class Home extends React.PureComponent<Props> {
       .ref()
       .child(`rooms/${id}`)
       .set(room)
-      .then(() => history.push(`/${id}`));
+      .then(() => history.push(`/test/${id}`));
   };
 }

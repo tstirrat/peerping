@@ -2,10 +2,12 @@ import { ThemeProvider } from '@rmwc/theme';
 import * as firebase from 'firebase/app';
 import * as React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import pure from 'recompose/pure';
 
 import { AppContainer } from './App.styles';
 import { AppHeader } from './AppHeader';
 import { Home } from './Home';
+import { Main } from './Home.styles';
 import { Room } from './Room';
 import { Txt } from './Txt';
 
@@ -44,15 +46,18 @@ export class App extends React.Component {
             {user ? (
               <Switch>
                 <Route
-                  path="/:id"
+                  path="/test/:id"
+                  exact
                   render={({ match }) => (
                     <Room user={user} id={match.params.id} />
                   )}
                 />
                 <Route
                   path="/"
+                  exact
                   render={props => <Home user={user} {...props} />}
                 />
+                <Route component={RouteNotFound} />
               </Switch>
             ) : (
               <Txt use="body2">Loading...</Txt>
@@ -79,3 +84,11 @@ export class App extends React.Component {
     this.userUnsub();
   }
 }
+
+const RouteNotFound = pure(() => (
+  <Main role="main">
+    <Txt use="headline2" theme="primary">
+      Not found
+    </Txt>
+  </Main>
+));
