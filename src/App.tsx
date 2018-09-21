@@ -3,6 +3,7 @@ import * as firebase from 'firebase/app';
 import * as React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import { AppContainer } from './App.styles';
 import { AppHeader } from './AppHeader';
 import { Home } from './Home';
 import { Room } from './Room';
@@ -39,22 +40,24 @@ export class App extends React.Component {
       <Router>
         <ThemeProvider options={THEME}>
           <AppHeader />
-          {user ? (
-            <Switch>
-              <Route
-                path="/:id"
-                render={({ match }) => (
-                  <Room user={user} id={match.params.id} />
-                )}
-              />
-              <Route
-                path="/"
-                render={props => <Home user={user} {...props} />}
-              />
-            </Switch>
-          ) : (
-            <Txt use="body2">Loading...</Txt>
-          )}
+          <AppContainer>
+            {user ? (
+              <Switch>
+                <Route
+                  path="/:id"
+                  render={({ match }) => (
+                    <Room user={user} id={match.params.id} />
+                  )}
+                />
+                <Route
+                  path="/"
+                  render={props => <Home user={user} {...props} />}
+                />
+              </Switch>
+            ) : (
+              <Txt use="body2">Loading...</Txt>
+            )}
+          </AppContainer>
         </ThemeProvider>
       </Router>
     );
