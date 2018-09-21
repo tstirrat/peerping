@@ -1,6 +1,7 @@
 import Typography, { TypographyPropsT } from '@rmwc/typography';
-import * as React from 'react';
-import pure from 'recompose/pure';
+import compose from 'recompose/compose';
+import defaultProps from 'recompose/defaultProps';
+import mapProps from 'recompose/mapProps';
 
 const TAG_MAP: { [K in TypographyPropsT['use']]?: string } = {
   body1: 'p',
@@ -23,17 +24,12 @@ export type Props = OtherProps & {
   use?: TypographyPropsT['use'];
 };
 
-export const Txt = pure<Props>(
-  ({ children, use = 'body1', theme, ...rest }) => {
-    return (
-      <Typography
-        tag={TAG_MAP[use]}
-        use={use}
-        {...rest}
-        theme={theme || 'onSurface'}
-      >
-        {children}
-      </Typography>
-    );
-  }
+const enhance = compose<TypographyPropsT, Props>(
+  defaultProps({ use: 'body1', theme: 'onSurface' }),
+  mapProps<Props, TypographyPropsT>(props => ({
+    ...props,
+    tag: props.tag ? props.tag : TAG_MAP[props.use]
+  }))
 );
+
+export const Txt = enhance(Typography);

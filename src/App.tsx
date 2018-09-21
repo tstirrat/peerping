@@ -24,7 +24,7 @@ const THEME = {
 
   onPrimary: 'rgba(0,0,0,0.87)',
 
-  secondary: '#141a1d', // blue grey, darker than 900
+  secondary: '#214b61', // blue grey, darker than 900
   onSecondary: 'rgba(255,255,255,.87)'
 };
 

@@ -11,3 +11,7 @@ a:link,
 a:visited {
   color: var(--mdc-theme-primary, #fff);
 }
+
+.mdc-top-app-bar--fixed-adjust {
+  padding-bottom: 32px;
+}

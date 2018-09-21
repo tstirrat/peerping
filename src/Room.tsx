@@ -1,11 +1,13 @@
-import { Card } from '@rmwc/card';
+import Button from '@rmwc/button';
+import { CardActionIcons, CardActions } from '@rmwc/card';
+import { ListDivider } from '@rmwc/list';
 import * as firebase from 'firebase/app';
 import * as React from 'react';
 import { Redirect } from 'react-router';
 import * as Peer from 'simple-peer';
 
 import { ConnectionStats } from './ConnectionStats';
-import { CodeBlock } from './Room.styles';
+import { CardContent, CodeBlock, MainCard } from './Room.styles';
 import { Txt } from './Txt';
 
 export interface UrlParams {
@@ -22,6 +24,7 @@ export interface State {
   connection?: RTCPeerConnection;
   goHome?: boolean;
   stats?: any[];
+  showDebug?: boolean;
 }
 
 export enum RoomStatus {
@@ -78,33 +81,43 @@ export class Room extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const { meta, connection, goHome } = this.state;
+    const { meta, connection, goHome, showDebug } = this.state;
     const { id } = this.props;
     const url = `${process.env.REACT_APP_PUBLIC_URL}/${id}`;
     return (
-      <Card tag="main" role="main" style={{ margin: '0 auto', width: '900px' }}>
-        {goHome && <Redirect to="/" />}
+      <MainCard>
+        <CardContent>
+          {goHome && <Redirect to="/" />}
 
-        <Txt>
-          Give the room link to a friend to see the ping value between your
-          devices
-        </Txt>
-
-        <Txt use="body2">
-          Room link: <a href={url}>{url}</a>
-        </Txt>
-
-        {connection ? <ConnectionStats connection={connection} /> : null}
-
-        <aside>
-          <Txt use="headline4" tag="h1">
-            Debug
+          <Txt>
+            Give the room link to a friend to see the ping value between your
+            devices
           </Txt>
-          <CodeBlock use="caption" tag="pre">
-            {meta}
-          </CodeBlock>
-        </aside>
-      </Card>
+
+          <Txt use="body2">
+            Room link: <a href={url}>{url}</a>
+          </Txt>
+
+          {connection ? <ConnectionStats connection={connection} /> : null}
+        </CardContent>
+
+        <CardActions>
+          <CardActionIcons>
+            <Button onClick={this.toggleDebug}>Debug</Button>
+          </CardActionIcons>
+        </CardActions>
+
+        {showDebug && (
+          <>
+            <ListDivider />
+            <CardContent>
+              <CodeBlock use="caption" tag="pre">
+                {meta}
+              </CodeBlock>
+            </CardContent>
+          </>
+        )}
+      </MainCard>
     );
   }
 
@@ -192,4 +205,7 @@ export class Room extends React.PureComponent<Props, State> {
     });
     console.table(filteredStats);
   }
+
+  private toggleDebug = () =>
+    this.setState({ showDebug: !this.state.showDebug });
 }

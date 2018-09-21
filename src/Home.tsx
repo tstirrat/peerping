@@ -4,6 +4,7 @@ import * as greg from 'greg';
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 
+import { Main, Title } from './Home.styles';
 import { RoomData, RoomStatus } from './Room';
 import { Txt } from './Txt';
 
@@ -14,15 +15,15 @@ export interface Props extends RouteComponentProps {
 export class Home extends React.PureComponent<Props> {
   render() {
     return (
-      <main role="main" aria-labelledby="app-title">
-        <Txt use="headline1" id="app-title">
+      <Main role="main" aria-labelledby="app-title">
+        <Title id="app-title" theme="primary">
           Peer ping
-        </Txt>
+        </Title>
         <Txt use="subtitle1">Measure the ping between two peers</Txt>
-        <Button raised type="button" onClick={this.createRoomClicked}>
+        <Button raised onClick={this.createRoomClicked}>
           Create room
         </Button>
-      </main>
+      </Main>
     );
   }
 
