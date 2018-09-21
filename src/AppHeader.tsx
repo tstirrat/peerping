@@ -1,5 +1,6 @@
 import 'material-components-web/dist/material-components-web.css';
 
+import { Theme } from '@rmwc/theme';
 import {
   TopAppBar,
   TopAppBarFixedAdjust,
@@ -15,7 +16,6 @@ import onlyUpdateForKeys from 'recompose/onlyUpdateForKeys';
 import pure from 'recompose/pure';
 
 const HomeLink = styled(Link)`
-  color: var(--mdc-theme-on-secondary) !important;
   text-decoration: none;
 
   &:hover,
@@ -31,8 +31,10 @@ export const AppHeader = pure(() => (
         <TopAppBarSection alignStart>
           <HomeIcon />
           <TopAppBarTitle tag="h1">
-            {/* TODO: <Theme wrap> types are broken */}
-            <HomeLink to="/">Peer ping</HomeLink>
+            {/* TODO: https://github.com/jamesmfriedman/rmwc/issues/320 */}
+            <Theme use="onSecondary" wrap={(true as any) as undefined}>
+              <HomeLink to="/">Peer ping</HomeLink>
+            </Theme>
           </TopAppBarTitle>
         </TopAppBarSection>
       </TopAppBarRow>
