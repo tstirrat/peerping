@@ -2,6 +2,7 @@ import Typography, { TypographyPropsT } from '@rmwc/typography';
 import compose from 'recompose/compose';
 import defaultProps from 'recompose/defaultProps';
 import mapProps from 'recompose/mapProps';
+import pure from 'recompose/pure';
 
 const TAG_MAP: { [K in TypographyPropsT['use']]?: string } = {
   body1: 'p',
@@ -32,4 +33,4 @@ const enhance = compose<TypographyPropsT, Props>(
   }))
 );
 
-export const Txt = enhance(Typography);
+export const Txt = enhance(pure(Typography));
